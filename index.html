@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Responsive Blog Website</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .blog-post {
+      margin-bottom: 40px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .blog-post h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .blog-post p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    
+    .blog-post img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    
+    .blog-form {
+      margin-bottom: 40px;
+    }
+    
+    .blog-form input[type="text"],
+    .blog-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .blog-form input[type="submit"] {
+      background-color: #33531b;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    
+    .blog-list {
+      list-style-type: none;
+      padding: 0;
+      margin-bottom: 40px;
+    }
+    
+    .blog-list li {
+      margin-bottom: 20px;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>My Blog</h1>
+      <p>Welcome to my blog website!</p>
+    </header>
+    
+    <section class="blog-form">
+      <h2>Add a New Blog Post</h2>
+      <form id="blogForm">
+        <input type="text" id="titleInput" placeholder="Enter title" required>
+        <textarea id="contentInput" placeholder="Enter content" rows="4" required></textarea>
+        <input type="submit" value="Submit">
+      </form>
+    </section>
+    
+    <section class="blog-list">
+      <h2>Latest Blog Posts</h2>
+      <ul id="blogList"></ul>
+    </section>
+  </div>
+  
+  <footer class="footer">
+    <p>&copy; 2023 My Blog. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // JavaScript Code
+    const form = document.getElementById('blogForm');
+    const titleInput = document.getElementById('titleInput');
+    const contentInput = document.getElementById('contentInput');
+    const blogList = document.getElementById('blogList');
+    
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const title = titleInput.value;
+      const content = contentInput.value;
+      
+      const blogItem = document.createElement('li');
+      blogItem.innerHTML = `
+        <div class="blog-post">
+          <h2>${title}</h2>
+          <p>${content}</p>
+        </div>
+      `;
+      
+      blogList.prepend(blogItem);
+      
+      titleInput.value = '';
+      contentInput.value = '';
+    });
+  </script>
+</body>
+</html>
